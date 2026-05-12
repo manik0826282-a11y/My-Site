@@ -20,247 +20,88 @@
     --radius: 12px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 32px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .logo {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent2);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid var(--border); background: var(--surface); }
+  .logo { font-size: 20px; font-weight: 700; color: var(--accent2); text-decoration: none; letter-spacing: -0.5px; }
   .logo span { color: var(--accent); }
   nav .nav-links { display: flex; gap: 12px; align-items: center; }
   .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all .15s; text-decoration: none; }
   .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
   .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: #5a52e0; }
   .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--border); font-size: 12px; padding: 5px 10px; }
   .btn-danger:hover { border-color: var(--danger); }
-
-  /* HERO */
-  .hero {
-    text-align: center;
-    padding: 72px 24px 48px;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-  }
-  .hero h1 .highlight {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero p { color: var(--muted); font-size: 17px; margin-bottom: 40px; }
-
-  /* SHORTEN BOX */
-  .shorten-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    max-width: 640px;
-    margin: 0 auto 60px;
-  }
+  .hero { text-align: center; padding: 72px 24px 32px; max-width: 640px; margin: 0 auto; }
+  .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
+  .hero h1 .highlight { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { color: var(--muted); font-size: 17px; }
+  .shorten-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; max-width: 640px; margin: 32px auto 40px; }
   .field { margin-bottom: 16px; }
   .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
-  .field input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    font-size: 15px;
-    color: var(--text);
-    outline: none;
-    transition: border-color .15s;
-  }
+  .field input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 15px; color: var(--text); outline: none; transition: border-color .15s; }
   .field input:focus { border-color: var(--accent); }
   .field input::placeholder { color: var(--muted); }
-  .shorten-btn {
-    width: 100%;
-    padding: 14px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .15s;
-    letter-spacing: 0.2px;
-  }
+  .shorten-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all .15s; }
   .shorten-btn:hover { background: #5a52e0; transform: translateY(-1px); }
-  .shorten-btn:active { transform: translateY(0); }
   .shorten-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-
-  /* RESULT */
-  .result-card {
-    margin-top: 20px;
-    background: var(--surface2);
-    border: 1px solid var(--accent);
-    border-radius: 10px;
-    padding: 18px;
-    display: none;
-  }
+  .result-card { margin-top: 20px; background: var(--surface2); border: 1px solid var(--accent); border-radius: 10px; padding: 18px; display: none; }
   .result-card.show { display: block; }
   .result-label { font-size: 12px; color: var(--accent2); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
-  .result-row { display: flex; align-items: center; gap: 10px; }
-  .result-url { flex: 1; font-size: 15px; font-weight: 600; color: var(--accent2); word-break: break-all; }
+  .result-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .result-url { flex: 1; font-size: 14px; font-weight: 600; color: var(--accent2); word-break: break-all; min-width: 0; }
   .copy-btn { padding: 8px 16px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: all .15s; }
-  .copy-btn:hover { background: #5a52e0; }
   .copy-btn.copied { background: var(--success); }
-
-  /* STATS SECTION */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 640px;
-    margin: 0 auto 60px;
-  }
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    text-align: center;
-  }
+  .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 640px; margin: 0 auto 48px; padding: 0 24px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
   .stat-num { font-size: 28px; font-weight: 700; color: var(--accent2); }
   .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-  /* LINKS TABLE */
-  .links-section { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+  .links-section { max-width: 960px; margin: 0 auto; padding: 0 24px 60px; }
   .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
   .section-header h2 { font-size: 20px; font-weight: 700; }
-  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  table { width: 100%; border-collapse: collapse; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 500px; }
   thead { background: var(--surface2); }
   th { padding: 14px 16px; text-align: left; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--border); }
   td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: var(--surface2); }
-  .slug-cell { font-weight: 600; color: var(--accent2); font-size: 15px; }
-  .dest-cell { color: var(--muted); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .slug-cell { font-weight: 600; color: var(--accent2); }
+  .dest-cell { color: var(--muted); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .clicks-badge { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
   .empty-state { text-align: center; padding: 60px 24px; color: var(--muted); }
   .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: .4; }
-  .empty-state p { font-size: 15px; }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 12px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0;
-    transition: all .25s;
-    pointer-events: none;
-    z-index: 999;
-    white-space: nowrap;
-  }
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 12px 22px; border-radius: 30px; font-size: 14px; font-weight: 500; opacity: 0; transition: all .25s; pointer-events: none; z-index: 999; white-space: nowrap; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast.success { border-color: var(--success); color: var(--success); }
   .toast.error { border-color: var(--danger); color: var(--danger); }
-
-  /* SETUP BANNER */
-  .setup-banner {
-    background: #1a1a0a;
-    border: 1px solid #4a4a10;
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    max-width: 640px;
-    margin: 0 auto 32px;
-    font-size: 14px;
-    color: #d4d400;
-    display: none;
-  }
-  .setup-banner.show { display: block; }
-  .setup-banner strong { display: block; margin-bottom: 8px; font-size: 15px; }
-  .setup-banner code { background: #2a2a10; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-
-  /* MODAL - LOGIN */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,.7);
-    z-index: 100;
-    display: none;
-    align-items: center;
-    justify-content: center;
-  }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 100; display: none; align-items: center; justify-content: center; }
   .modal-overlay.show { display: flex; }
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    width: 90%;
-    max-width: 380px;
-  }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; width: 90%; max-width: 380px; }
   .modal h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
   .modal p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
   .modal .field { margin-bottom: 14px; }
   .modal-btns { display: flex; gap: 10px; margin-top: 8px; }
   .modal-btns .btn { flex: 1; justify-content: center; padding: 11px; }
-
   @media (max-width: 600px) {
     nav { padding: 14px 16px; }
-    .hero { padding: 48px 16px 32px; }
-    .shorten-box { margin: 0 16px 40px; }
-    .stats-bar { grid-template-columns: 1fr; margin: 0 16px 40px; }
+    .hero { padding: 40px 16px 24px; }
+    .shorten-box { margin: 20px 16px 28px; }
+    .stats-bar { grid-template-columns: 1fr; margin: 0 16px 28px; }
     .links-section { padding: 0 16px 40px; }
-    th:nth-child(3), td:nth-child(3) { display: none; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="logo" href="/"><span>Snip</span>URL</a>
+  <a class="logo" href="#"><span>Snip</span>URL</a>
   <div class="nav-links">
     <span id="user-email" style="font-size:13px;color:var(--muted)"></span>
     <button class="btn btn-ghost" id="auth-btn" onclick="toggleAuth()">Login</button>
   </div>
 </nav>
 
-<div style="max-width:640px;margin:0 auto;padding:0 24px">
-  <div class="setup-banner" id="setup-banner">
-    <strong>⚙️ Setup Required</strong>
-    <code>config.js</code> ফাইলে আপনার Supabase URL ও API Key দিন।
-    নিচের guide দেখুন।
-  </div>
-</div>
-
-<section class="hero" style="padding-bottom:32px">
+<section class="hero">
   <h1>Short links,<br><span class="highlight">big impact</span></h1>
   <p>যেকোনো long URL কে ছোট করুন। Free, fast, forever.</p>
 </section>
@@ -273,11 +114,9 @@
     </div>
     <div class="field">
       <label>Custom slug (optional)</label>
-      <input type="text" id="slug-input" placeholder="e.g.  my-link  (ফাঁকা = auto)" maxlength="30" />
+      <input type="text" id="slug-input" placeholder="e.g. my-link  (ফাঁকা রাখলে auto তৈরি হবে)" maxlength="30" />
     </div>
-    <button class="shorten-btn" onclick="shorten()" id="shorten-btn">
-      ✂️ &nbsp; Short Link তৈরি করুন
-    </button>
+    <button class="shorten-btn" onclick="shorten()" id="shorten-btn">✂️ &nbsp;Short Link তৈরি করুন</button>
     <div class="result-card" id="result-card">
       <div class="result-label">✅ Short link ready</div>
       <div class="result-row">
@@ -288,19 +127,10 @@
   </div>
 </div>
 
-<div class="stats-bar" style="padding:0 24px;max-width:680px;margin:0 auto 48px">
-  <div class="stat-card">
-    <div class="stat-num" id="stat-total">0</div>
-    <div class="stat-label">Total links</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="stat-clicks">0</div>
-    <div class="stat-label">Total clicks</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="stat-today">0</div>
-    <div class="stat-label">Created today</div>
-  </div>
+<div class="stats-bar">
+  <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Total links</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-clicks">—</div><div class="stat-label">Total clicks</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-today">—</div><div class="stat-label">Created today</div></div>
 </div>
 
 <div class="links-section">
@@ -309,69 +139,54 @@
     <button class="btn btn-ghost" onclick="loadLinks()" style="font-size:13px">↻ Refresh</button>
   </div>
   <div class="table-wrap" id="links-wrap">
-    <div class="empty-state">
-      <div class="empty-icon">🔗</div>
-      <p>এখনো কোনো link নেই। উপরে তৈরি করুন!</p>
-    </div>
+    <div class="empty-state"><div class="empty-icon">🔗</div><p>লোড হচ্ছে...</p></div>
   </div>
 </div>
 
-<!-- Auth Modal -->
 <div class="modal-overlay" id="auth-modal">
   <div class="modal">
-    <h3 id="modal-title">Login</h3>
-    <p id="modal-sub">Account থাকলে login করুন, নইলে signup করুন।</p>
-    <div class="field">
-      <label>Email</label>
-      <input type="email" id="auth-email" placeholder="you@example.com" />
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" id="auth-pass" placeholder="••••••••" />
-    </div>
+    <h3>Login / Signup</h3>
+    <p>Account থাকলে login করুন, নইলে signup করুন।</p>
+    <div class="field"><label>Email</label><input type="email" id="auth-email" placeholder="you@example.com" /></div>
+    <div class="field"><label>Password</label><input type="password" id="auth-pass" placeholder="••••••••" /></div>
     <div class="modal-btns">
       <button class="btn btn-ghost" onclick="closeModal()">বাতিল</button>
-      <button class="btn btn-primary" onclick="doLogin()" id="login-btn">Login</button>
-      <button class="btn btn-ghost" onclick="doSignup()" id="signup-btn">Signup</button>
+      <button class="btn btn-primary" onclick="doLogin()">Login</button>
+      <button class="btn btn-ghost" onclick="doSignup()">Signup</button>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script src="config.js"></script>
 <script>
-const { createClient } = supabase;
-let sb, session = null, currentUrl = '';
+const SUPABASE_URL = 'https://mqydyyllgrjjoqcsuvklu.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xeWR5eWxncmpqb3Fjc3V2a2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1NzQyOTUsImV4cCI6MjA5NDE1MDI5NX0.-B0t9C6NIHEISeL1UkZXzmUHuuhtnzN3tXcK2F7B4Vw';
 
-function init() {
-  if (typeof SUPABASE_URL === 'undefined' || SUPABASE_URL === 'YOUR_SUPABASE_URL') {
-    document.getElementById('setup-banner').classList.add('show');
-    return;
-  }
-  sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  sb.auth.onAuthStateChange((_, s) => {
-    session = s;
-    updateAuthUI();
-    loadLinks();
-  });
-  sb.auth.getSession().then(({ data }) => {
-    session = data.session;
-    updateAuthUI();
-    loadLinks();
-  });
-  checkRedirect();
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let session = null, currentUrl = '';
+
+function getBase() {
+  const p = window.location.pathname.replace(/index\.html$/, '');
+  return window.location.origin + p;
 }
 
-async function checkRedirect() {
-  const path = window.location.pathname.replace('/', '').trim();
-  if (!path || path === 'index.html') return;
-  if (!sb) return;
-  const { data } = await sb.from('links').select('dest').eq('slug', path).single();
-  if (data?.dest) {
-    await sb.rpc('increment_clicks', { link_slug: path });
-    window.location.replace(data.dest);
-  }
+sb.auth.onAuthStateChange((_, s) => { session = s; updateAuthUI(); loadLinks(); });
+sb.auth.getSession().then(({ data }) => { session = data.session; updateAuthUI(); loadLinks(); });
+
+const params = new URLSearchParams(window.location.search);
+const rSlug = params.get('r');
+if (rSlug) {
+  (async () => {
+    const { data } = await sb.from('links').select('dest').eq('slug', rSlug).single();
+    if (data?.dest) {
+      await sb.rpc('increment_clicks', { link_slug: rSlug }).catch(() => {});
+      window.location.replace(data.dest);
+    } else {
+      toast('Link পাওয়া যায়নি: ' + rSlug, 'error');
+    }
+  })();
 }
 
 async function shorten() {
@@ -379,16 +194,15 @@ async function shorten() {
   let slug = document.getElementById('slug-input').value.trim().replace(/[^a-zA-Z0-9\-_]/g, '');
   if (!dest) { toast('Destination URL দিন!', 'error'); return; }
   if (!dest.startsWith('http')) { toast('URL https:// দিয়ে শুরু করুন', 'error'); return; }
-  if (!sb) { toast('Supabase setup করুন আগে', 'error'); return; }
   if (!slug) slug = randSlug();
   const btn = document.getElementById('shorten-btn');
   btn.disabled = true; btn.textContent = 'তৈরি হচ্ছে...';
   const payload = { slug, dest, clicks: 0, created_at: new Date().toISOString() };
   if (session) payload.user_id = session.user.id;
   const { error } = await sb.from('links').insert([payload]);
-  btn.disabled = false; btn.innerHTML = '✂️ &nbsp; Short Link তৈরি করুন';
+  btn.disabled = false; btn.innerHTML = '✂️ &nbsp;Short Link তৈরি করুন';
   if (error) { toast(error.message.includes('duplicate') ? 'এই slug আগে থেকেই আছে!' : error.message, 'error'); return; }
-  const short = window.location.origin + '/' + slug;
+  const short = getBase() + '?r=' + slug;
   currentUrl = short;
   document.getElementById('result-url-text').textContent = short;
   document.getElementById('result-card').classList.add('show');
@@ -399,36 +213,29 @@ async function shorten() {
 }
 
 async function loadLinks() {
-  if (!sb) return;
   let query = sb.from('links').select('*').order('created_at', { ascending: false }).limit(50);
   if (session) query = query.eq('user_id', session.user.id);
   const { data, error } = await query;
-  if (error || !data) return;
+  if (error) { document.getElementById('links-wrap').innerHTML = `<div class="empty-state"><p style="color:var(--danger)">Error: ${error.message}</p></div>`; return; }
+  if (!data) return;
   updateStats(data);
   renderTable(data);
 }
 
 function renderTable(links) {
   const wrap = document.getElementById('links-wrap');
-  if (!links.length) {
-    wrap.innerHTML = `<div class="empty-state"><div class="empty-icon">🔗</div><p>এখনো কোনো link নেই। উপরে তৈরি করুন!</p></div>`;
-    return;
-  }
-  const origin = window.location.origin;
-  const rows = links.map(l => `
-    <tr>
-      <td class="slug-cell"><a href="${origin}/${l.slug}" target="_blank" style="color:var(--accent2);text-decoration:none">${origin}/${l.slug}</a></td>
-      <td class="dest-cell" title="${l.dest}">${l.dest}</td>
-      <td><span class="clicks-badge">${l.clicks || 0} clicks</span></td>
-      <td>
-        <button class="copy-btn" style="padding:5px 12px;font-size:12px" onclick="copyText('${origin}/${l.slug}')">Copy</button>
-        <button class="btn-danger btn" style="margin-left:6px" onclick="deleteLink('${l.slug}')">Delete</button>
-      </td>
-    </tr>`).join('');
-  wrap.innerHTML = `<table>
-    <thead><tr><th>Short URL</th><th>Destination</th><th>Clicks</th><th>Actions</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table>`;
+  if (!links.length) { wrap.innerHTML = `<div class="empty-state"><div class="empty-icon">🔗</div><p>এখনো কোনো link নেই। উপরে তৈরি করুন!</p></div>`; return; }
+  const base = getBase();
+  const rows = links.map(l => `<tr>
+    <td class="slug-cell"><a href="${base}?r=${l.slug}" target="_blank" style="color:var(--accent2);text-decoration:none">${base}?r=${l.slug}</a></td>
+    <td class="dest-cell" title="${l.dest}">${l.dest}</td>
+    <td><span class="clicks-badge">${l.clicks || 0} clicks</span></td>
+    <td style="white-space:nowrap">
+      <button class="copy-btn" style="padding:5px 12px;font-size:12px" onclick="copyText('${base}?r=${l.slug}')">Copy</button>
+      <button class="btn btn-danger" style="margin-left:6px" onclick="deleteLink('${l.slug}')">Delete</button>
+    </td>
+  </tr>`).join('');
+  wrap.innerHTML = `<table><thead><tr><th>Short URL</th><th>Destination</th><th>Clicks</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 function updateStats(links) {
@@ -441,8 +248,7 @@ function updateStats(links) {
 async function deleteLink(slug) {
   if (!confirm('Delete করবেন?')) return;
   await sb.from('links').delete().eq('slug', slug);
-  toast('Deleted', 'success');
-  loadLinks();
+  toast('Deleted ✅', 'success'); loadLinks();
 }
 
 function copyUrl() { copyText(currentUrl); }
@@ -450,8 +256,8 @@ function copyText(url) {
   navigator.clipboard.writeText(url).then(() => {
     const btn = document.getElementById('copy-btn');
     if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000); }
-    else toast('Copied!', 'success');
-  });
+    toast('Copied! ✅', 'success');
+  }).catch(() => { toast('Copy failed', 'error'); });
 }
 
 function randSlug(n = 6) {
@@ -468,15 +274,13 @@ async function doLogin() {
   const email = document.getElementById('auth-email').value;
   const password = document.getElementById('auth-pass').value;
   const { error } = await sb.auth.signInWithPassword({ email, password });
-  if (error) toast(error.message, 'error');
-  else { closeModal(); toast('Login সফল! ✅', 'success'); }
+  if (error) toast(error.message, 'error'); else { closeModal(); toast('Login সফল! ✅', 'success'); }
 }
 async function doSignup() {
   const email = document.getElementById('auth-email').value;
   const password = document.getElementById('auth-pass').value;
   const { error } = await sb.auth.signUp({ email, password });
-  if (error) toast(error.message, 'error');
-  else { closeModal(); toast('Signup সফল! Email confirm করুন।', 'success'); }
+  if (error) toast(error.message, 'error'); else { closeModal(); toast('Signup সফল! Email confirm করুন।', 'success'); }
 }
 function updateAuthUI() {
   const btn = document.getElementById('auth-btn');
@@ -492,8 +296,6 @@ function toast(msg, type = '') {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
 }
-
-init();
 </script>
 </body>
 </html>
